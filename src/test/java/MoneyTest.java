@@ -117,4 +117,12 @@ public class MoneyTest {
         Money returnedSum = noCurrency150.subtract(noCurrency50);
         Assert.assertThat(expectedSum, is(returnedSum));
     }
+
+    @Test
+    public void subtractingBiggerValueFromSmallerShouldReturnProperNegativeValue()
+    {
+        Money expectedSum = new Money(-100, "PLN");
+        Money returnedSum = pln50.subtract(pln150);
+        Assert.assertThat(expectedSum, is(returnedSum));
+    }
 }
