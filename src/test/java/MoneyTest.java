@@ -33,4 +33,12 @@ public class MoneyTest {
         Money returnedSum = pln50.add(pln150);
         Assert.assertThat(returnedSum, is(expectedSum));
     }
+
+    @Test
+    public void subtractingSameCurrencyMoneyShouldReturnProperResult()
+    {
+        Money expectedSum = new Money(100, "PLN");
+        Money returnedSum = pln150.subtract(pln50);
+        Assert.assertThat(returnedSum, is(expectedSum));
+    }
 }
