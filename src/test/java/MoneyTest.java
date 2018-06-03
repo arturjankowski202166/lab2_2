@@ -87,4 +87,18 @@ public class MoneyTest {
         Money expectedSum = new Money(200, "PLN");
         Money returnedSum = pln50.add(usd150);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void subtractingNoCurrencyToCurrencyMoneyShouldThrowIllegalArgumentException()
+    {
+        Money expectedSum = new Money(200, "PLN");
+        Money returnedSum = pln50.subtract(noCurrency150);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void subtractingDifferentCurrencyMoneyShouldThrowIllegalArgumentException()
+    {
+        Money expectedSum = new Money(200, "PLN");
+        Money returnedSum = pln50.subtract(usd150);
+    }
 }
