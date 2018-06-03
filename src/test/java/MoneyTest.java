@@ -41,4 +41,20 @@ public class MoneyTest {
         Money returnedSum = pln150.subtract(pln50);
         Assert.assertThat(returnedSum, is(expectedSum));
     }
+
+    @Test
+    public void multiplyingCurrencyWithDoubleShouldReturnProperResult()
+    {
+        Money expectedSum = new Money(100, "PLN");
+        Money returnedSum = pln50.multiplyBy(2.0);
+        Assert.assertThat(returnedSum, is(expectedSum));
+    }
+    @Test
+    public void multiplyingCurrencyWithDecimalShouldReturnProperResult()
+    {
+        Money expectedSum = new Money(100, "PLN");
+        Money returnedSum = pln50.multiplyBy(new BigDecimal(2.0));
+        Assert.assertThat(returnedSum, is(expectedSum));
+    }
+
 }
