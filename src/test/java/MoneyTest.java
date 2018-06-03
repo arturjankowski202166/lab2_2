@@ -49,11 +49,28 @@ public class MoneyTest {
         Money returnedSum = pln50.multiplyBy(2.0);
         Assert.assertThat(returnedSum, is(expectedSum));
     }
+
     @Test
     public void multiplyingCurrencyWithDecimalShouldReturnProperResult()
     {
         Money expectedSum = new Money(100, "PLN");
         Money returnedSum = pln50.multiplyBy(new BigDecimal(2.0));
+        Assert.assertThat(returnedSum, is(expectedSum));
+    }
+
+    @Test
+    public void multiplyingNoCurrencyWithDoubleShouldReturnProperResult()
+    {
+        Money expectedSum = new Money(100);
+        Money returnedSum = noCurrency50.multiplyBy(2.0);
+        Assert.assertThat(returnedSum, is(expectedSum));
+    }
+
+    @Test
+    public void multiplyingNoCurrencyWithDecimalShouldReturnProperResult()
+    {
+        Money expectedSum = new Money(100, "PLN");
+        Money returnedSum = noCurrency50.multiplyBy(new BigDecimal(2.0));
         Assert.assertThat(returnedSum, is(expectedSum));
     }
 
