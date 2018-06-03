@@ -101,4 +101,12 @@ public class MoneyTest {
         Money expectedSum = new Money(200, "PLN");
         Money returnedSum = pln50.subtract(usd150);
     }
+
+    @Test
+    public void addingNoCurrenciesShouldReturnDefaultEurCurrency()
+    {
+        Money expectedSum = new Money(200, "EUR");
+        Money returnedSum = noCurrency50.add(noCurrency150);
+        Assert.assertThat(expectedSum, is(returnedSum));
+    }
 }
