@@ -103,10 +103,18 @@ public class MoneyTest {
     }
 
     @Test
-    public void addingNoCurrenciesShouldReturnDefaultEurCurrency()
+    public void addingNoCurrenciesShouldReturnDefaultEurCurrencyWithProperValue()
     {
         Money expectedSum = new Money(200, "EUR");
         Money returnedSum = noCurrency50.add(noCurrency150);
+        Assert.assertThat(expectedSum, is(returnedSum));
+    }
+
+    @Test
+    public void subtractingNoCurrenciesShouldReturnDefaultEurCurrencyWithProperValue()
+    {
+        Money expectedSum = new Money(100, "EUR");
+        Money returnedSum = noCurrency150.subtract(noCurrency50);
         Assert.assertThat(expectedSum, is(returnedSum));
     }
 }
