@@ -69,9 +69,22 @@ public class MoneyTest {
     @Test
     public void multiplyingNoCurrencyWithDecimalShouldReturnProperResult()
     {
-        Money expectedSum = new Money(100, "PLN");
+        Money expectedSum = new Money(100);
         Money returnedSum = noCurrency50.multiplyBy(new BigDecimal(2.0));
         Assert.assertThat(returnedSum, is(expectedSum));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void addingNoCurrencyToCurrencyMoneyShouldThrowIllegalArgumentException()
+    {
+        Money expectedSum = new Money(200, "PLN");
+        Money returnedSum = pln50.add(noCurrency150);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addingDifferentCurrencyMoneyShouldThrowIllegalArgumentException()
+    {
+        Money expectedSum = new Money(200, "PLN");
+        Money returnedSum = pln50.add(usd150);
+    }
 }
